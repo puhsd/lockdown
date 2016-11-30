@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'slim-rails'
 gem 'simple_form'
+gem 'friendly_id'
+gem 'omniauth-google-oauth2'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'font-awesome-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
