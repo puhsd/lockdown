@@ -1,0 +1,10 @@
+.container.vertical-center
+	= link_to("/auth/google_oauth2", class: "btn btn-default google-login google-login-sm hidden-md hidden-lg") do
+		= image_tag "btn_google_light_normal.svg", class: "google-logo"
+		| Sign in with Google
+	= link_to("/auth/google_oauth2", class: "btn btn-default google-login google-login-md hidden-xs hidden-sm hidden-lg") do
+		= image_tag "btn_google_light_normal.svg", class: "google-logo"
+		| Sign in with Google
+	= link_to("/auth/google_oauth2", class: "btn btn-default google-login google-login-lg hidden-xs hidden-sm hidden-md") do
+		= image_tag "btn_google_light_normal.svg", class: "google-logo"
+		| Sign in with Google

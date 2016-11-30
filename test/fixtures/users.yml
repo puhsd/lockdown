@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  object_guid: MyString
+  username: MyString
+  ldap_attributes: 
+
+two:
+  object_guid: MyString
+  username: MyString
+  ldap_attributes: 

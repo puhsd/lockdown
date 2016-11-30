@@ -1,0 +1,23 @@
+h1 Locks
+
+table
+  thead
+    tr
+      th Url
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @locks.each do |lock|
+      tr
+        td = lock.url
+        td = link_to lock.user.username, user_path(lock.user)
+        td = link_to 'Show', lock
+        td = link_to 'Edit', edit_lock_path(lock)
+        td = link_to 'Destroy', lock, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Lock', new_lock_path

@@ -1,0 +1,13 @@
+p
+  strong Object guid:
+  = @user.object_guid
+p
+  strong Username:
+  = @user.username
+p
+  strong Ldap attributes:
+  = @user.ldap_attributes
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path

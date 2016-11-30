@@ -4,4 +4,36 @@
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
+@import "_variables";
 @import "bootstrap";
+@import "_bootswatch";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
+
+body { padding-top: 70px; }
+
+.vertical-center {
+	height: calc(100vh - 210px);
+  display: flex;
+  align-items: center;
+}
+
+a.google {
+	padding:24px;
+	display: flex;
+	align-items: center;
+	height:120px;
+	color: #757575;
+	font-family: 'Roboto', sans-serif;
+	font-size: 42px;
+	img {
+		height: 54px;
+		margin-right:72px;
+	}
+	&:hover{
+		background-color: #eeeeee;
+		color:#6d6d6d;
+	}
+}

@@ -1,0 +1,9 @@
+= simple_form_for(@lock) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :url
+    = f.association :user, label_method: :username, value_method: :id, include_blank: false
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,66 @@
+// Place Sass files here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootswatch/_paper";
+@import "bootstrap";
+@import "bootswatch/_bootswatch";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
+
+body { padding-top: 70px; }
+
+.vertical-center {
+	height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+}
+
+a.google-login {
+	align-items: center;
+	color: $gray;
+	display: flex;
+	font-weight: medium;
+	margin:auto;
+	font-size: 14px;
+	height:34px;
+	padding:8px;
+	img {
+		height: 18px;
+		margin-right:24px;
+	}
+}
+
+a.google-login-sm {
+	font-size: 14px;
+	height:34px;
+	padding:8px;
+	img.google-logo {
+		height: 18px;
+		margin-right:24px;
+	}
+}
+
+a.google-login-md {
+	font-size: 28px;
+	height:68px;
+	padding:16px;
+	img.google-logo {
+		height: 36px;
+		margin-right:48px;
+	}
+}
+
+a.google-login-lg {
+	font-size: 56px;
+	height:136px;
+	padding:32px;
+	img.google-logo {
+		height: 72px;
+		margin-right:96px;
+	}
+}
