@@ -1,23 +1,34 @@
-h1 Locks
+h3 Locks
 
-table
+table.table
   thead
     tr
-      th Url
-      th User
-      th
-      th
+      th Name
+      th.hidden-xs
+        | Url
+      th.hidden-xs
+        | User
       th
 
   tbody
     - @locks.each do |lock|
       tr
-        td = lock.url
-        td = link_to lock.user.username, user_path(lock.user)
-        td = link_to 'Show', lock
-        td = link_to 'Edit', edit_lock_path(lock)
-        td = link_to 'Destroy', lock, data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          = lock.name
+          <br/>
+          = link_to(lock.url,lock.url, class: "visible-xs-inline")
+        td.hidden-xs
+          = link_to(lock.url,lock.url)
+        td.hidden-xs
+          = link_to lock.user.username, user_path(lock.user)
+        td.text-center
+           = link_to 'Show', lock
+           | &nbsp;|&nbsp;
+           = link_to 'Edit', edit_lock_path(lock)
+           | &nbsp;|&nbsp;
+           = link_to 'Destroy', lock, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Lock', new_lock_path
+.text-center
+  = link_to 'New Lock', new_lock_path, class: "btn btn-default"

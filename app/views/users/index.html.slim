@@ -1,25 +1,25 @@
-h1 Listing users
+h3 Listing users
 
-table
+table.table
   thead
     tr
-      th Object guid
       th Username
-      th Ldap attributes
+      th Access
       th
-      th
-      th
+      - if policy(User).destroy?
+        th
 
   tbody
     - @users.each do |user|
       tr
-        td = user.object_guid
         td = user.username
-        td = user.ldap_attributes
+        td = user.access_level
         td = link_to 'Show', user
-        td = link_to 'Edit', edit_user_path(user)
-        td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+
+        - link_to 'Edit', edit_user_path(user)
+        td
+          = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete if policy(User).destroy?
 
 br
 
-= link_to 'New User', new_user_path
+- link_to 'New User', new_user_path

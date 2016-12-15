@@ -1,10 +1,6 @@
-p
-  strong Url:
-  = @lock.url
-p
-  strong User:
-  = link_to @lock.user.username, user_path(@lock.user)
-
-= link_to 'Edit', edit_lock_path(@lock)
-'|
-= link_to 'Back', locks_path
+.container.vertical-center
+	
+	= link_to(locks_path(), class: "btn btn-default google-login google-login-md hidden-md hidden-lg") do
+		= @lock.code
+	= link_to(locks_path(), class: "btn btn-default google-login google-login-lg hidden-xs hidden-sm ") do
+		= @lock.code

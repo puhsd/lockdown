@@ -1,15 +1,21 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authorize
+  before_action :authorize_user
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    # @users = User.all
+    @users = policy_scope(User)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user.present?
+      authorize @user
+    else
+      skip_authorization
+    end
   end
 
   # GET /users/new
@@ -69,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:object_guid, :username, :ldap_attributes)
+      params.require(:user).permit(policy(User).permitted_attributes)
     end
 end

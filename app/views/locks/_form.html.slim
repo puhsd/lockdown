@@ -2,8 +2,9 @@
   = f.error_notification
 
   .form-inputs
+    = f.input :name
     = f.input :url
     = f.association :user, label_method: :username, value_method: :id, include_blank: false
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btb btn-primary"

@@ -1,13 +1,36 @@
-p
-  strong Object guid:
-  = @user.object_guid
-p
-  strong Username:
-  = @user.username
-p
-  strong Ldap attributes:
-  = @user.ldap_attributes
+legend
+  'User
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong First Name:
+  p.col-lg-10
+    = @user.firstname ? @user.firstname : "-"
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Last name:
+  p.col-lg-10
+    = @user.lastname ? @user.lastname : "-"
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Username:
+  p.col-lg-10
+    = @user.username ? @user.username : "-"
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Type:
+  p.col-lg-10
+    = @user.access_level ? @user.access_level : "-"
+
+div.col-lg-10.col-lg-offset-2
+  - if policy(User).update?
+    = link_to "Set As Admin", user_path(id: @user.id, "user[access_level]" => 'admin'), :method => :patch, :class => 'btn btn-primary', :role  => "button" unless @user.admin?
+    | &nbsp;
+    = link_to "Set As Teacher", user_path(id: @user.id, "user[access_level]" => 'teacher'), :method => :patch, :class => 'btn btn-primary', :role  => "button"  unless @user.teacher?
+    | &nbsp;
+    = link_to "Set As Student", user_path(id: @user.id, "user[access_level]" => 'student'), :method => :patch, :class => 'btn btn-primary', :role  => "button"  unless @user.student?
+    | &nbsp;
+  = link_to 'Back', users_path, class: "btn btn-default"

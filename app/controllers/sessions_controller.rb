@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
+    user = User.from_omniauth(request.env["omniauth.auth"])
     if user
       session[:user_id] = user.id
       flash[:notice] = "Login was successfull"
@@ -19,4 +19,23 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been successfully logged out."
     redirect_to root_path
   end
+
+  def redirecting
+
+    if !current_user
+      redirect_to login_path
+    else
+      case current_user.access_level
+      when 'teacher'
+          redirect_to locks_path
+      when 'admin'
+          redirect_to users_path
+      else
+          redirect_to login_path
+      end
+    end
+
+  end
+
+
 end

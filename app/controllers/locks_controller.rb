@@ -1,30 +1,35 @@
 class LocksController < ApplicationController
   before_action :set_lock, only: [:show, :edit, :update, :destroy]
-  before_action :authorize
-  
+  before_action :authorize_user,  :except => [:show, :link]
+
   # GET /locks
   # GET /locks.json
   def index
-    @locks = Lock.all
+    # @locks = Lock.all
+    @locks =  policy_scope(Lock)
   end
 
   # GET /locks/1
   # GET /locks/1.json
   def show
+    authorize @lock
   end
 
   # GET /locks/new
   def new
+    authorize Lock
     @lock = Lock.new
   end
 
   # GET /locks/1/edit
   def edit
+    authorize @lock
   end
 
   # POST /locks
   # POST /locks.json
   def create
+    authorize Lock
     @lock = Lock.new(lock_params)
 
     respond_to do |format|
@@ -62,6 +67,24 @@ class LocksController < ApplicationController
     end
   end
 
+
+  def link
+    @lock = Lock.find_by_code(params['code'].downcase) if params['code']
+    if @lock != nil
+      respond_to do |format|
+          format.html {  }
+          format.json { render json: @lock.as_json(only: [:url]) }
+      end
+    else
+      respond_to do |format|
+        format.html {  }
+        format.json { render json: {"url" => "/link"}.as_json }
+      end
+    end
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lock
@@ -70,6 +93,6 @@ class LocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lock_params
-      params.require(:lock).permit(:url, :user_id)
+      params.require(:lock).permit(:url, :user_id, :name)
     end
 end

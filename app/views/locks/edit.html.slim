@@ -1,8 +1,47 @@
-h1 Editing lock
+h3 Editing lock
 
 == render 'form'
 
-= link_to 'Show', @lock
-'|
-= link_to 'Back', locks_path
 
+div.text-center
+  = link_to 'Show', @lock, class: "btn btn-default"
+  '&nbsp;
+  = link_to 'Back', locks_path, class: "btn btn-default"
+
+
+legend
+  'Show URL
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Name:
+  p.col-lg-10
+    = @lock.name ? @lock.name : "-"
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Url:
+  p.col-lg-10
+    a href=@lock.url
+      = @lock.url
+      = ' - ' unless @lock.url
+
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong Code:
+  p.col-lg-10
+    = @lock.code ? @lock.code : "-"
+    |   -   
+    = link_to "Reset", lock_path(id: @lock.id, "lock[code]" => 'reset'), :method => :patch
+
+div.row.row-eq-height
+  lable.col-lg-2.text-right
+    strong User:
+  p.col-lg-10
+    = link_to @lock.user.username, user_path(@lock.user)
+
+div.col-lg-10.col-lg-offset-2
+  = link_to 'Edit', edit_lock_path(@lock), class: "btn btn-default"
+  |&nbsp;
+  = link_to 'Back', locks_path, class: "btn btn-default"
