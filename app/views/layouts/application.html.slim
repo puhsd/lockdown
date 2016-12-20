@@ -16,8 +16,12 @@ html
 	            span.sr-only Toggle navigation
 	            - 3.times do
 		            span.icon-bar
-	          a.navbar-brand href="/"
-	            | PUHSD Lockdown
+            - if current_user
+              a.navbar-brand href="/"
+	             | PUHSD Lockdown
+            - else
+              .navbar-brand
+                | PUHSD Lockdown
 	        #navbar.collapse.navbar-collapse
 	        	- if current_user
   	        	  ul.nav.navbar-nav
