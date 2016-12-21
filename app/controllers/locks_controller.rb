@@ -77,6 +77,7 @@ class LocksController < ApplicationController
           format.json { render json: @lock.as_json(only: [:url]) }
           format.js do
             render :json => @lock.as_json(only: [:url]), :callback => params[:callback]
+            puts "jsonp"
           end
       end
     else
