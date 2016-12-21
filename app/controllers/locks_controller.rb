@@ -1,6 +1,7 @@
 class LocksController < ApplicationController
   before_action :set_lock, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user,  :except => [:show, :link]
+  skip_before_action :verify_authenticity_token, only: :link
 
   # GET /locks
   # GET /locks.json
@@ -74,6 +75,9 @@ class LocksController < ApplicationController
       respond_to do |format|
           format.html {  }
           format.json { render json: @lock.as_json(only: [:url]) }
+          format.js do
+            render :json => @lock.as_json(only: [:url]), :callback => params[:callback]
+          end
       end
     else
       respond_to do |format|

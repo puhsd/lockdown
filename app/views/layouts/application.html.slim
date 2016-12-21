@@ -13,15 +13,16 @@ html
 	      .container-fluid
 	        .navbar-header
 	          button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
-	            span.sr-only Toggle navigation
-	            - 3.times do
-		            span.icon-bar
-            - if current_user
-              a.navbar-brand href="/"
-	             | PUHSD Lockdown
-            - else
-              .navbar-brand
-                | PUHSD Lockdown
+            	- if current_user
+    	            span.sr-only Toggle navigation
+    	            - 3.times do
+    		            span.icon-bar
+              - if current_user
+                a.navbar-brand href="/"
+	               | PUHSD Lockdown
+              - else
+                .navbar-brand
+                  | PUHSD Lockdown
 	        #navbar.collapse.navbar-collapse
 	        	- if current_user
   	        	  ul.nav.navbar-nav
