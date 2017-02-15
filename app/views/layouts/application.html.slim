@@ -3,7 +3,7 @@ html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title
-      = content_for?(:title) ? yield(:title) : 'Lockdown'
+      = content_for?(:title) ? yield(:title) : 'solo'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -19,10 +19,10 @@ html
     		            span.icon-bar
               - if current_user
                 a.navbar-brand href="/"
-	               | PUHSD Lockdown
+	               | solo
               - else
                 .navbar-brand
-                  | PUHSD Lockdown
+                  | solo
 	        #navbar.collapse.navbar-collapse
 	        	- if current_user
   	        	  ul.nav.navbar-nav

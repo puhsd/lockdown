@@ -15,7 +15,7 @@ class User < ApplicationRecord
 			user.access_level = 1 if auth.info.email.split("@").last == 'puhsd.org'
 			user.firstname = auth.info.first_name
 			user.lastname = auth.info.last_name
-    end
+    end if auth.info.email.split("@").last == 'puhsd.org'
   end
 
 

@@ -4,7 +4,9 @@
   .form-inputs
     = f.input :name
     = f.input :url
-    = f.association :user, label_method: :username, value_method: :id, include_blank: false
+    = f.input_field :user, :as => "hidden",  :input_html => { :value => (@lock.user ? @lock.user.id : current_user.id ) }
+
+
 
   .form-actions
     = f.button :submit, class: "btb btn-primary"
