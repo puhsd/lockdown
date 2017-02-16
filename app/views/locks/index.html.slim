@@ -20,7 +20,7 @@ table.table
         td.hidden-xs
           = link_to(lock.url,lock.url)
         td.hidden-xs
-          = link_to lock.user.username, user_path(lock.user)
+          = link_to lock.user.username, user_path(lock.user) if lock.user
         td.text-center
            = link_to 'Show', lock
            | &nbsp;|&nbsp;
