@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :url
-    = f.input_field :user, :as => "hidden",  :input_html => { :value => (@lock.user ? @lock.user.id : current_user.id ) }
+    = f.input_field :user_id, :as => "hidden",  :value => (@lock.user ? @lock.user.id : current_user.id ) 
 
 
 
