@@ -26,8 +26,9 @@ html
 	        #navbar.collapse.navbar-collapse
 	        	- if current_user
   	        	  ul.nav.navbar-nav
-                    li
-                      = link_to  "Users", users_path()
+                    - if policy(User).index?
+                      li
+                        = link_to  "Users", users_path()
                     li
                       = link_to "Locks", locks_path()
 

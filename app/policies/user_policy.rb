@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.admin?
+  end
+
   def show?
     # scope.where(:id => record.id).exists? unless user.admin?
     # true
