@@ -12,10 +12,10 @@ class User < ApplicationRecord
   def self.create_from_omniauth(auth)
     create! do |user|
       user.username = auth.info.email.split("@").first
-			user.access_level = 1 if auth.info.email.split("@").last == 'puhsd.org'
+			user.access_level = 1 if auth.info.email.split("@").last == ENV["DOMAIN_EDING"]
 			user.firstname = auth.info.first_name
 			user.lastname = auth.info.last_name
-    end if auth.info.email.split("@").last == 'puhsd.org'
+    end if auth.info.email.split("@").last == ENV["DOMAIN_EDING"]
   end
 
 
