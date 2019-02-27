@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.11'
 
 set :application, 'testing'
 set :repo_url, 'git@github.com:puhsd/lockdown.git'
