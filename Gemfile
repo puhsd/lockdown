@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '>= 5.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -12,7 +12,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -33,17 +33,19 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'friendly_id'
-gem 'omniauth-google-oauth2'
+# gem 'omniauth-google-oauth2'
+gem 'google_sign_in'
+
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'font-awesome-sass'
 gem 'pundit'
 gem 'dotenv-rails'
 
 group :development do
-  gem 'capistrano', '~> 3.6'
+  gem 'capistrano', '~> 3.11'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-passenger'
 end
 

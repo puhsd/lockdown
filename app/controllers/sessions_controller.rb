@@ -4,7 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    # user = User.from_omniauth(request.env["omniauth.auth"])
+
+    user = authenticate_with_google
+
     if user
       session[:user_id] = user.id
       flash[:notice] = "Login was successfull"
@@ -23,7 +26,7 @@ class SessionsController < ApplicationController
   def redirecting
 
     if !current_user
-      redirect_to login_path
+      redirect_to welcome_path
     else
       case current_user.access_level
       when 'teacher'
@@ -36,6 +39,17 @@ class SessionsController < ApplicationController
     end
 
   end
+
+  private
+    def authenticate_with_google
+      if flash[:google_sign_in_token].present?
+
+        auth = GoogleSignIn::Identity.new(flash[:google_sign_in_token])
+        user = User.google_sign_in(auth)
+
+        return user
+      end
+    end
 
 
 end
