@@ -3,7 +3,7 @@ class User < ApplicationRecord
   enum access_level: { student: 0, teacher: 1, admin: 2 }
 
 	def self.google_sign_in(auth)
-		where(username: auth.email_address.split("@").first).first || create_from_omniauth(auth)
+		where(username: auth.email_address.split("@").first).first || create_from_google_sign_in(auth)
 	end
 
 	def self.create_from_google_sign_in(auth)
