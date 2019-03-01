@@ -7,11 +7,15 @@ class User < ApplicationRecord
 	end
 
 	def self.create_from_google_sign_in(auth)
+		puts "-----------------------"
+		puts auth.methods
+		puts "-----------------------"
+
     create! do |user|
       user.username = auth.email_address.split("@").first
-			user.access_level = 1 if auth.info.email_address.split("@").last == ENV["DOMAIN_EDING"]
-			user.firstname = auth.given_name
-			user.lastname = auth.last_name
+			user.access_level = 1 if auth.email_address.split("@").last == ENV["DOMAIN_EDING"]
+			user.firstname = auth.name.split(" ").first
+			user.lastname = auth.name.split(" ").last
     end if auth.email_address.split("@").last == ENV["DOMAIN_EDING"]
   end
 
